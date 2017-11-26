@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/tether.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/tether.min.js"></script>      
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/funcoes.js"></script>
+  </head>  
+  <body>
+    <div class="container">      
+      <h4 class="text-center"><%= title %></h4>
+      <br>
+      <div class="card-deck">  
+        <% for(var i=0; i < data.length; i++) { %>
+          <div class="card">
+            <div class="card-block">    
+              <h4 class="card-title"><%= data[i].titulo %></h4>  
+              <div class="row">
+                <div class="col-md-8">        
+                  <div class="card text-center">  
+                    <ul class="list-group list-group-flush">                                                   
+                      <% for(var j=0; j < data[i].itens.length; j++) { %>                    
+                          <li class="list-group-item"><%= data[i].itens[j].valor %></li>                    
+                      <% } %>      
+                    </ul>
+                  </div>              
+                </div>
+                <div class="col-md-4">
+                <button type="button" class="btn btn-danger btn-sm" onclick="sortear(this, '<%= JSON.stringify(data[i].itens) %>')" >Sortear</button>
+                  <br><br>
+                  <span id="spNSort">item sorteado</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
